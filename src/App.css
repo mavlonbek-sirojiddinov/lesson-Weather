@@ -1,38 +1,216 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: digital;
+  src: url(./Assets/fonts/Soat-font.otf);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: war;
+  src: url(./Assets/fonts/MPonderosa.otf);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: ddd;
+  src: url(./Assets/fonts/Insomnia.ttf);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: 30px;
+  background: #1d2b3a;
 }
 
-.App-link {
-  color: #61dafb;
+.weather-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1000px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-weather {
+  position: relative;
+  width: 270px;
+}
+
+.input-weather input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: #1d2b3a;
+  border-radius: 7px;
+  outline: none;
+  color: #00dfc4;
+  font-size: 1em;
+  transition: 0.3s;
+}
+
+.input-weather span {
+  font-family: 'Poppins', sans-serif;
+  position: absolute;
+  left: 0;
+  padding: 12.5px 12px;
+  pointer-events: none;
+  font-size: 1em;
+  color: rgba(255,255,255,0.25);
+  transition: 0.3s;
+}
+
+.input-weather input:valid ~ span,
+.input-weather input:focus ~ span {
+  color: #1d2b3a;
+  transform: translateX(10px) translateY(-12px);
+  font-size: 0.85em;
+  padding: 2px 10px;
+  background: #00dfc4;
+  letter-spacing: 0.2em;
+  border-radius: 2.5px;
+  box-shadow: 0 0 10px #00dfc4, 
+              0 0 20px #00dfc4;
+}
+
+.input-weather input:valid,
+.input-weather input:focus {
+  border: 1px solid #00dfc4;
+  box-shadow: 0 0 10px #00dfc4 inset,
+              0 0 15px #00dfc4 inset,
+              0 0 10px #00dfc4,
+              0 0 20px #00dfc4;
+}
+
+.location-box {
+  text-align: center;
+  background-color: crimson;
+  padding: 100px 20px;
+}
+
+.location-box {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #060c21;
+}
+
+.location-box::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: #fff;
+  z-index: -1;
+}
+
+.location-box::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #fff;
+  z-index: -2;
+  filter: blur(40px);
+}
+
+.location-box::before,
+.location-box::after {
+  background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4);
+}
+
+.content {
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.location {
+  width: 100%;
+  min-width: 150px;
+  padding: 0 10px 11px;
+  font-size: 3em;
+  letter-spacing: 8px;
+  font-family: war;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgb(21, 255, 0);
+  box-shadow: 0 0 10px rgb(21, 255, 0),
+              0 0 12px rgb(21, 255, 0),
+              0 0 7px rgb(21, 255, 0) inset,
+              0 0 7px rgb(21, 255, 0) inset;
+  text-transform: uppercase;
+  color: rgb(21, 255, 0);
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.year-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #00bcd4;
+  box-shadow: 0 0 10px #00bcd4,
+              0 0 10px #00bcd4;
+  margin-bottom: 40px;
+}
+
+.date {
+  font-family: sans-serif;
+  margin-bottom: 5px;
+}
+
+.digi {
+  font-family: digital;
+  color: rgb(21, 255, 0);
+}
+
+.num-two {
+  color: #00e1ff;
+}
+
+.noy {
+  color: #00e1ff;
+}
+
+.yil {
+  color: rgb(21, 255, 0);
+}
+
+.weather-temp {
+  font-size: 40px;
+  font-family: sans-serif;
+  color: #00e1ff;
+  box-shadow: 0 0 10px #00e1ff,
+              0 0 15px #00e1ff,
+              0 0 10px #00e1ff inset,
+              0 0 15px #00e1ff inset;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 40px;
+}
+
+.cloud {
+  font-family: ddd;
+  padding: 12px;
+  color: rgb(21, 255, 0);
+  box-shadow: 0 0 10px rgb(21, 255, 0),
+              0 0 15px rgb(21, 255, 0),
+              0 0 10px rgb(21, 255, 0) inset,
+              0 0 15px rgb(21, 255, 0) inset;
+  letter-spacing: 10px;
+  border-radius: 10px;
 }
